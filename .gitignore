@@ -1,0 +1,7 @@
+# exclude everything
+scrapes/*
+config.yaml
+__pycache__/*
+
+# exception to the rule
+!scrapes/.gitkeep 
