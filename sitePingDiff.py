@@ -239,8 +239,7 @@ def checkLastRunTime(config):
 	diffTime = time.time() - lastRunTime
 	if diffTime > maxAge:
 		print("Not run within the last " + str(config['runAtLeastEveryXHours']) + " hours, will run all scrapes now")
-		sys.args.append("--now")
-		print(sys.args)
+		sys.argv.append("--now")
 	else:
 		print("Last run: " + str(round(diffTime)) + " seconds ago")
 
