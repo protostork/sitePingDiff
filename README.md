@@ -10,7 +10,7 @@ Please do share any feedback, feature requests or bug reports.
 
 Configure by editing the config_default.yml file (in yaml format https://yaml.org/start.html) with the pages you would like to regularly scrape (you can also rename and modify this file to config.yml to contain your personal configuration).
 
-For email alerts, need to set emailAccount, emailPassword and emailRecipient in the config: section of the file. Do NOT use your standard Gmail password here - you can create app-specific Gmail passwords, which is much safe: https://myaccount.google.com/apppasswords
+For email alerts, need to set emailAccount, emailPassword and emailRecipient in the "config:" section of the file. Do NOT use your standard Gmail password here - you can create app-specific Gmail passwords, which is much safer: https://myaccount.google.com/apppasswords
 
 To add a page to crawl, find the "pages:" section in the yml file, and add or uncomment the required below options (make sure you include appropriate spaces or tabs):
 

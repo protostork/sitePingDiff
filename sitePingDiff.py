@@ -11,6 +11,7 @@ import datetime
 import time
 import yagmail
 import re
+import json
 
 now = datetime.datetime.now()
 
@@ -156,12 +157,6 @@ class webpageProcessor:
 
 
 	def processPage(self):
-		# Testing in case I forgot one...
-		page = self.page
-
-		# print(self.args)
-		# print(self.checkOnlyThisPage)
-
 		if not self.executeAtThisTime() and "--now" not in self.args:
 			# print("Time not right")
 			return False
@@ -179,8 +174,13 @@ class webpageProcessor:
 			self.latestPageContent = 'error'
 		filename = self.savepath + self.page['name'] + ".txt"
 
+		if 'json' in self.page:
+			convertedFromJson = json.loads(self.latestPageContent)
+			self.latestPageContent = convertedFromJson[self.page['json']]
+
 		if 'searchWithinTag' in self.page:
 			self.latestPageContent = self.returnContentBetweenTags(self.page['searchWithinTag'])
+
 
 		if os.path.isfile(filename) and not self.latestPageContent == 'error' and len(self.latestPageContent) > 10:
 			with open(filename, 'r') as file:

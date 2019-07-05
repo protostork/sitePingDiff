@@ -17,3 +17,4 @@ pages:
 		#strip: # add this if you want to strip the following tags from the page
 		#  - strong # this will strip <strong> tags from the fetched file - useful for malformed XML that could break BeautifulSoup parser
 		#onlyAdditions: True # If set, this only alerts for additions rather than also deletions in page
+		#json: html # Set this if the scraped file is a json file. The second 'html' paramater, for instance, would grab only the {html: 'abcd'} content from the json.
