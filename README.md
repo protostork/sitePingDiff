@@ -14,23 +14,9 @@ Configure by editing the config_default.yml file (in yaml format https://yaml.or
 
 For email alerts, you need to set emailAccount, emailPassword and emailRecipient in the config: section of the file. Do NOT use your standard Gmail password here - you can create app-specific Gmail passwords, which is much safer: https://myaccount.google.com/apppasswords
 
-To add a page to crawl, find the "pages:" section in the yml file, and add or uncomment the required below options (make sure you include appropriate spaces or tabs):
+To add a page to crawl, find the "pages:" section in the yml file, and add or uncomment the required options (make sure you include appropriate spaces so Yaml doesn't freak out). Your best bet may be to take included config_default.yml file, rename it to config.yml, and customise that.
 
-`
-pages:
-	Example: # the name of the page
-		url: http://www.example.org
-		searchWithinTag: # optionally, only search for diffs within the following XML tags
-			tag: div # e.g., only search divs
-			attr: # optionally specify a class or id attribute for the 'tag'
-		#hours: 6 # requires cronjob - enable this to only scrape every even 6th or nth hour the script is run (i.e., at 6am, 12pm and 6pm)
-		#minutes: 5 # requires cronjob - enable this to scrape every even 5th or nth minute the script is run (i.e., 605pm, 610pm, 615pm, etc)
-		#strip: # add this if you want to strip the following tags from the page
-		#  - strong # this will strip <strong> tags from the fetched file
-		#onlyAdditions: True # If set to True, this only alerts for additions rather than also deletions in page
-`
-
-To use this automatically, create a cron or other scheduled task that runs this script every minute, and set 'hours' or 'minutes' for each 'page' in the config file to throttle your scraping of specific pages (otherwise the pages will be scraped every time the cron is run).
+To use this automatically, create a cron or other scheduled task that runs this script (or better, the included `sitePinger.sh` file) every few minutes, and set 'hours' or 'minutes' for each 'page' in the config file to throttle your scraping of specific pages (otherwise the pages will be scraped every time the cron is run).
 
 ### Can use mercury-parser for more advanced scraping of complex sites
 
