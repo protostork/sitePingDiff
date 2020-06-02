@@ -12,6 +12,6 @@ import yaml
 def yamlCfg(configfile):
     with open(configfile, 'r') as ymlfile:
         fileString = ymlfile.read().replace('\t', '  ') # in case some tabs have crept into yaml file, convert to spaces
-        cfg = yaml.load(fileString)
+        cfg = yaml.load(fileString, Loader=yaml.FullLoader)
         return cfg
 
