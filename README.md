@@ -32,10 +32,10 @@ or
 
 Then create an executable bash script somewhere you can run it, which contains: 
 
-`
+```
 #/bin/bash
 nodejs ~/.config/yarn/global/node_modules/@postlight/mercury-parser/cli.js "$1"
-`
+```
 
 Then add the full path to this script in your config.yml's config.mercuryparser section, and use the `mercury-parser: true` setting in your config.yml page, as a child of followhyperlinks (see config_default.yml for example) 
 
@@ -43,11 +43,11 @@ Then add the full path to this script in your config.yml's config.mercuryparser 
 
 Run ./sitePingDiff.py either without parameters (after setting the config as above), or with the following command line options
 
-`
+```
 --now				: runs the script immediately, ignoring any timetables that may have been set
 --page [pagename] 	: only run the script on [pagename] as specified in config.yml 'name' parameter
 --debug             : Debugging mode, don't send emails but output everything to screen instead
-`
+```
 
 I would recommend using the `sitePinger.sh` script included, which ensures that two copies of this aren't running at the same time, and kills the script if it gets stuck and runs longer than 5 minutes (see roadmap and bugs section below).
 
@@ -60,13 +60,13 @@ Install these Python libraries with pip from the command line, if you don't have
 
 ### Changelog
 
-##### Version 0.2, 3 June 2020
+#### Version 0.2, 3 June 2020
 
 - Improved robustness of checks for when a site was last scraped, based on the file modification times
 - Added support for mercury-parser
 - General minor clean-up of code and lots of bug fixes
 
-##### Version 0.1
+#### Version 0.1
 - Dirty initial script that just about did the job
 
 
