@@ -14,17 +14,18 @@ For email alerts, need to set emailAccount, emailPassword and emailRecipient in 
 
 To add a page to crawl, find the "pages:" section in the yml file, and add or uncomment the required below options (make sure you include appropriate spaces or tabs):
 
-	pages:
-		Example: # the name of the page
-			url: http://www.example.org
-			searchWithinTag: # optionally, only search for diffs within the following XML tags
-				tag: div # e.g., only search divs
-				attr: # optionally specify a class or id attribute for the 'tag'
-			#hours: 6 # requires cronjob - enable this to only scrape every even 6th or nth hour the script is run (i.e., at 6am, 12pm and 6pm)
-			#minutes: 5 # requires cronjob - enable this to scrape every even 5th or nth minute the script is run (i.e., 605pm, 610pm, 615pm, etc)
-			#strip: # add this if you want to strip the following tags from the page
-			#  - strong # this will strip <strong> tags from the fetched file
-			#onlyAdditions: True # If set to True, this only alerts for additions rather than also deletions in page
+    pages:
+        Example: # the name of the page
+            url: http://www.example.org
+            searchWithinTag: # optionally, only search for diffs within the following XML tags
+                tag: div # e.g., only search divs
+                attr: # optionally specify a class or id attribute for the 'tag'
+            #hours: 6 # requires cronjob - enable this to only scrape every even 6th or nth hour the script is run (i.e., at 6am, 12pm and 6pm)
+            #minutes: 5 # requires cronjob - enable this to scrape every even 5th or nth minute the script is run (i.e., 605pm, 610pm, 615pm, etc)
+            #strip: # add this if you want to strip the following tags from the page
+            #  - strong # this will strip <strong> tags from the fetched file
+            #onlyAdditions: True # If set to True, this only alerts for additions rather than also deletions in page
+            #json: html # Set this if the scraped file is a json file (i.e., if you're scraping an Ajax endpoint directly). The second 'html' parameter, for instance, would grab only the {html: 'abcd'} content from the json.
 
 To use automatically, create a cron or other scheduled task that runs this script every minute, and set 'hours' or 'minutes' for each 'page' in the config file to throttle your scraping of specific pages (otherwise the pages will be scraped every time the cron is run).
 

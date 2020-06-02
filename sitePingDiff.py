@@ -61,8 +61,8 @@ class webpageProcessor:
 		print("Scrape all pages specified in config.yml")
 		print("Usage:")
 		print("Run without parameters to scrape according to configured timetable")
-		print("--now			Scrape now, ignore timetables")
-		print("--page [pagename]	Scrape only pagename")
+		print("--now            Scrape now, ignore timetables")
+		print("--page [pagename]    Scrape only pagename")
 		quit()
 
 
@@ -110,13 +110,17 @@ class webpageProcessor:
 				content = re.sub(r'<\/?' + striptag + '>', '', content)
 		soup = BeautifulSoup(content, 'html.parser')
 		htmlSoup = soup.find_all(searchWithinTagDict['tag'], searchWithinTagDict['attr'])
+		if not htmlSoup: # If nothing found with attr (as class), then try searching for attr as ID fallback
+			htmlSoup = soup.find_all(searchWithinTagDict['tag'], id=searchWithinTagDict['attr'])
 		#htmlSoup = soup.find(class_=searchWithinTagDict['attr'])
 		# html = soup.get_text()
 		# print(htmlSoup)
 		# html = htmlSoup.get_text() #" ".join(htmlSoup)
 		for oneSoup in htmlSoup:
 			if self.debug:
+				print("---------------------------------------------")
 				print("-----------------SOUP CONTENT----------------")
+				print("---------------------------------------------")
 				pprint(oneSoup)
 			#input()
 			html += oneSoup.get_text() + "\n" #.get_text() #" ".join(htmlSoup)
@@ -180,7 +184,7 @@ class webpageProcessor:
 
 		if 'searchWithinTag' in self.page:
 			self.latestPageContent = self.returnContentBetweenTags(self.page['searchWithinTag'])
-
+			print(self.latestPageContent)
 
 		if os.path.isfile(filename) and not self.latestPageContent == 'error' and len(self.latestPageContent) > 10:
 			with open(filename, 'r') as file:

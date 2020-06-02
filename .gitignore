@@ -1,6 +1,8 @@
 # exclude everything
 scrapes/*
 config.yaml
+config.yml
+*.pyc
 __pycache__/*
 
 # exception to the rule

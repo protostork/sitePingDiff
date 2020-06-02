@@ -7,6 +7,12 @@ config:
   emailRecipient: #INSERT EMAIL ADDRESS FOR RECIPIENT OF ALERTS HERE
 
 pages:
+  Wikipedia:
+    url: https://en.wikipedia.org/wiki/Main_Page
+    searchWithinTag:
+      tag: div
+      attr: mp-otd # Grab only changes from "On this day" div, which has id="mp-otd"
+    hours: 6
   Example: # this is the pagename that you can manually call with --page [pagename] command line argument
     url: http://www.example.org
     searchWithinTag: # optionally, only search for diffs within the following XML tags
